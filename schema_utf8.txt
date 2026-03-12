@@ -1,0 +1,440 @@
+--- Schema for organizations ---
+('org_id', 'bigint', 1)
+('org_id', 'bigint', 1)
+('org_name', 'text', 2)
+('org_name', 'text', 2)
+('industry', 'text', 3)
+('industry', 'text', 3)
+('country', 'text', 4)
+('country', 'text', 4)
+('created_at', 'timestamp without time zone', 5)
+('created_at', 'timestamp without time zone', 5)
+
+--- Schema for users ---
+('user_id', 'bigint', 1)
+('user_id', 'bigint', 1)
+('org_id', 'bigint', 2)
+('org_id', 'bigint', 2)
+('email', 'text', 3)
+('email', 'text', 3)
+('full_name', 'text', 4)
+('full_name', 'text', 4)
+('status', 'text', 5)
+('status', 'text', 5)
+('created_at', 'timestamp without time zone', 6)
+('created_at', 'timestamp without time zone', 6)
+
+--- Schema for products ---
+('product_id', 'bigint', 1)
+('product_id', 'bigint', 1)
+('product_name', 'text', 2)
+('product_name', 'text', 2)
+('category', 'text', 3)
+('category', 'text', 3)
+('is_active', 'boolean', 4)
+('is_active', 'boolean', 4)
+('created_at', 'timestamp without time zone', 5)
+('created_at', 'timestamp without time zone', 5)
+
+--- Schema for plans ---
+('plan_id', 'bigint', 1)
+('plan_id', 'bigint', 1)
+('product_id', 'bigint', 2)
+('product_id', 'bigint', 2)
+('plan_name', 'text', 3)
+('plan_name', 'text', 3)
+('billing_cycle', 'text', 4)
+('billing_cycle', 'text', 4)
+('created_at', 'timestamp without time zone', 5)
+('created_at', 'timestamp without time zone', 5)
+
+--- Schema for campaigns ---
+('campaign_id', 'bigint', 1)
+('campaign_id', 'bigint', 1)
+('name', 'text', 2)
+('name', 'text', 2)
+('channel', 'text', 3)
+('channel', 'text', 3)
+('start_date', 'date', 4)
+('start_date', 'date', 4)
+('end_date', 'date', 5)
+('end_date', 'date', 5)
+
+--- Schema for org_hierarchy ---
+('parent_org_id', 'bigint', 1)
+('parent_org_id', 'bigint', 1)
+('child_org_id', 'bigint', 2)
+('child_org_id', 'bigint', 2)
+('depth', 'integer', 3)
+('depth', 'integer', 3)
+
+--- Schema for subscriptions ---
+('subscription_id', 'bigint', 1)
+('subscription_id', 'bigint', 1)
+('user_id', 'bigint', 2)
+('user_id', 'bigint', 2)
+('plan_id', 'bigint', 3)
+('plan_id', 'bigint', 3)
+('status', 'text', 4)
+('status', 'text', 4)
+('start_date', 'date', 5)
+('start_date', 'date', 5)
+('end_date', 'date', 6)
+('end_date', 'date', 6)
+('created_at', 'timestamp without time zone', 7)
+('created_at', 'timestamp without time zone', 7)
+
+--- Schema for orders ---
+('order_id', 'bigint', 1)
+('order_id', 'bigint', 1)
+('user_id', 'bigint', 2)
+('user_id', 'bigint', 2)
+('order_status', 'text', 3)
+('order_status', 'text', 3)
+('order_time', 'timestamp without time zone', 4)
+('order_time', 'timestamp without time zone', 4)
+
+--- Schema for invoices ---
+('invoice_id', 'bigint', 1)
+('invoice_id', 'bigint', 1)
+('order_id', 'bigint', 2)
+('order_id', 'bigint', 2)
+('total_amount', 'numeric', 3)
+('total_amount', 'numeric', 3)
+('issued_at', 'timestamp without time zone', 4)
+('issued_at', 'timestamp without time zone', 4)
+
+--- Schema for payments ---
+('payment_id', 'bigint', 1)
+('payment_id', 'bigint', 1)
+('invoice_id', 'bigint', 2)
+('invoice_id', 'bigint', 2)
+('amount', 'numeric', 3)
+('amount', 'numeric', 3)
+('method', 'text', 4)
+('method', 'text', 4)
+('paid_at', 'timestamp without time zone', 5)
+('paid_at', 'timestamp without time zone', 5)
+
+--- Schema for revenue_recognition ---
+('rev_rec_id', 'bigint', 1)
+('rev_rec_id', 'bigint', 1)
+('invoice_id', 'bigint', 2)
+('invoice_id', 'bigint', 2)
+('recognition_date', 'date', 3)
+('recognition_date', 'date', 3)
+('amount', 'numeric', 4)
+('amount', 'numeric', 4)
+('status', 'text', 5)
+('status', 'text', 5)
+
+--- Schema for sessions ---
+('session_id', 'bigint', 1)
+('session_id', 'bigint', 1)
+('user_id', 'bigint', 2)
+('user_id', 'bigint', 2)
+('started_at', 'timestamp without time zone', 3)
+('started_at', 'timestamp without time zone', 3)
+('ended_at', 'timestamp without time zone', 4)
+('ended_at', 'timestamp without time zone', 4)
+('device_type', 'text', 5)
+('device_type', 'text', 5)
+('ip_address', 'inet', 6)
+('ip_address', 'inet', 6)
+
+--- Schema for events ---
+('event_id', 'bigint', 1)
+('event_id', 'bigint', 1)
+('session_id', 'bigint', 2)
+('session_id', 'bigint', 2)
+('user_id', 'bigint', 3)
+('user_id', 'bigint', 3)
+('event_type', 'text', 4)
+('event_type', 'text', 4)
+('event_time', 'timestamp without time zone', 5)
+('event_time', 'timestamp without time zone', 5)
+('properties', 'jsonb', 6)
+('properties', 'jsonb', 6)
+
+--- Schema for fact_funnel ---
+('funnel_id', 'bigint', 1)
+('funnel_id', 'bigint', 1)
+('step_name', 'text', 2)
+('step_name', 'text', 2)
+('step_order', 'integer', 3)
+('step_order', 'integer', 3)
+('user_count', 'integer', 4)
+('user_count', 'integer', 4)
+('computed_at', 'timestamp without time zone', 5)
+('computed_at', 'timestamp without time zone', 5)
+
+--- Schema for devices ---
+('device_id', 'bigint', 1)
+('device_id', 'bigint', 1)
+('user_id', 'bigint', 2)
+('user_id', 'bigint', 2)
+('fingerprint', 'text', 3)
+('fingerprint', 'text', 3)
+('first_seen', 'timestamp without time zone', 4)
+('first_seen', 'timestamp without time zone', 4)
+('last_seen', 'timestamp without time zone', 5)
+('last_seen', 'timestamp without time zone', 5)
+
+--- Schema for ip_intel ---
+('ip_address', 'inet', 1)
+('ip_address', 'inet', 1)
+('country', 'text', 2)
+('country', 'text', 2)
+('risk_level', 'text', 3)
+('risk_level', 'text', 3)
+
+--- Schema for risk_scores ---
+('score_id', 'bigint', 1)
+('score_id', 'bigint', 1)
+('entity_type', 'text', 2)
+('entity_type', 'text', 2)
+('entity_id', 'bigint', 3)
+('entity_id', 'bigint', 3)
+('score', 'numeric', 4)
+('score', 'numeric', 4)
+('calculated_at', 'timestamp without time zone', 5)
+('calculated_at', 'timestamp without time zone', 5)
+
+--- Schema for fraud_cases ---
+('case_id', 'bigint', 1)
+('case_id', 'bigint', 1)
+('entity_type', 'text', 2)
+('entity_type', 'text', 2)
+('entity_id', 'bigint', 3)
+('entity_id', 'bigint', 3)
+('label', 'boolean', 4)
+('label', 'boolean', 4)
+('created_at', 'timestamp without time zone', 5)
+('created_at', 'timestamp without time zone', 5)
+
+--- Schema for feature_store ---
+('feature_id', 'bigint', 1)
+('feature_id', 'bigint', 1)
+('entity_type', 'text', 2)
+('entity_type', 'text', 2)
+('entity_id', 'bigint', 3)
+('entity_id', 'bigint', 3)
+('feature_set', 'jsonb', 4)
+('feature_set', 'jsonb', 4)
+('version', 'integer', 5)
+('version', 'integer', 5)
+('generated_at', 'timestamp without time zone', 6)
+('generated_at', 'timestamp without time zone', 6)
+
+--- Schema for model_registry ---
+('model_id', 'bigint', 1)
+('model_id', 'bigint', 1)
+('model_name', 'text', 2)
+('model_name', 'text', 2)
+('version', 'text', 3)
+('version', 'text', 3)
+('metrics', 'jsonb', 4)
+('metrics', 'jsonb', 4)
+('trained_at', 'timestamp without time zone', 5)
+('trained_at', 'timestamp without time zone', 5)
+
+--- Schema for model_predictions ---
+('prediction_id', 'bigint', 1)
+('prediction_id', 'bigint', 1)
+('model_id', 'bigint', 2)
+('model_id', 'bigint', 2)
+('entity_type', 'text', 3)
+('entity_type', 'text', 3)
+('entity_id', 'bigint', 4)
+('entity_id', 'bigint', 4)
+('score', 'numeric', 5)
+('score', 'numeric', 5)
+('predicted_at', 'timestamp without time zone', 6)
+('predicted_at', 'timestamp without time zone', 6)
+
+--- Schema for drift_metrics ---
+
+--- Schema for fact_revenue_daily ---
+('revenue_date', 'date', 1)
+('revenue_date', 'date', 1)
+('org_id', 'bigint', 2)
+('org_id', 'bigint', 2)
+('total_revenue', 'numeric', 3)
+('total_revenue', 'numeric', 3)
+('total_refunds', 'numeric', 4)
+('total_refunds', 'numeric', 4)
+('net_revenue', 'numeric', 5)
+('net_revenue', 'numeric', 5)
+
+--- Schema for fact_churn ---
+
+--- Schema for snapshot_user_daily ---
+('snapshot_date', 'date', 1)
+('snapshot_date', 'date', 1)
+('user_id', 'bigint', 2)
+('user_id', 'bigint', 2)
+('is_active', 'boolean', 3)
+('is_active', 'boolean', 3)
+('plan_id', 'bigint', 4)
+('plan_id', 'bigint', 4)
+('mrr', 'numeric', 5)
+('mrr', 'numeric', 5)
+('churn_risk', 'numeric', 6)
+('churn_risk', 'numeric', 6)
+
+--- Schema for data_quality_checks ---
+('check_id', 'bigint', 1)
+('check_id', 'bigint', 1)
+('table_name', 'text', 2)
+('table_name', 'text', 2)
+('rule', 'text', 3)
+('rule', 'text', 3)
+('failure_rate', 'numeric', 4)
+('failure_rate', 'numeric', 4)
+('checked_at', 'timestamp without time zone', 5)
+('checked_at', 'timestamp without time zone', 5)
+
+--- Schema for anomaly_flags ---
+('anomaly_id', 'bigint', 1)
+('anomaly_id', 'bigint', 1)
+('entity_type', 'text', 2)
+('entity_type', 'text', 2)
+('entity_id', 'bigint', 3)
+('entity_id', 'bigint', 3)
+('metric_name', 'text', 4)
+('metric_name', 'text', 4)
+('metric_value', 'numeric', 5)
+('metric_value', 'numeric', 5)
+('expected_range', 'ARRAY', 6)
+('expected_range', 'ARRAY', 6)
+('detected_at', 'timestamp without time zone', 7)
+('detected_at', 'timestamp without time zone', 7)
+
+--- Schema for accounts ---
+('account_id', 'bigint', 1)
+('account_id', 'bigint', 1)
+('org_id', 'bigint', 2)
+('org_id', 'bigint', 2)
+('account_name', 'text', 3)
+('account_name', 'text', 3)
+('industry', 'text', 4)
+('industry', 'text', 4)
+('country', 'text', 5)
+('country', 'text', 5)
+('created_at', 'timestamp without time zone', 6)
+('created_at', 'timestamp without time zone', 6)
+
+--- Schema for contacts ---
+('contact_id', 'bigint', 1)
+('contact_id', 'bigint', 1)
+('account_id', 'bigint', 2)
+('account_id', 'bigint', 2)
+('email', 'text', 3)
+('email', 'text', 3)
+('full_name', 'text', 4)
+('full_name', 'text', 4)
+('role_title', 'text', 5)
+('role_title', 'text', 5)
+('created_at', 'timestamp without time zone', 6)
+('created_at', 'timestamp without time zone', 6)
+
+--- Schema for leads ---
+('lead_id', 'bigint', 1)
+('lead_id', 'bigint', 1)
+('source', 'text', 2)
+('source', 'text', 2)
+('campaign_id', 'bigint', 3)
+('campaign_id', 'bigint', 3)
+('status', 'text', 4)
+('status', 'text', 4)
+('created_at', 'timestamp without time zone', 5)
+('created_at', 'timestamp without time zone', 5)
+
+--- Schema for opportunity_stages ---
+('stage_id', 'bigint', 1)
+('stage_id', 'bigint', 1)
+('stage_name', 'text', 2)
+('stage_name', 'text', 2)
+('stage_order', 'integer', 3)
+('stage_order', 'integer', 3)
+
+--- Schema for opportunities ---
+('opp_id', 'bigint', 1)
+('opp_id', 'bigint', 1)
+('account_id', 'bigint', 2)
+('account_id', 'bigint', 2)
+('estimated_value', 'numeric', 3)
+('estimated_value', 'numeric', 3)
+('probability', 'double precision', 4)
+('probability', 'double precision', 4)
+('close_date', 'date', 5)
+('close_date', 'date', 5)
+('created_at', 'timestamp without time zone', 6)
+('created_at', 'timestamp without time zone', 6)
+
+--- Schema for opportunity_history ---
+('opp_id', 'bigint', 1)
+('opp_id', 'bigint', 1)
+('stage_id', 'bigint', 2)
+('stage_id', 'bigint', 2)
+('valid_from', 'timestamp without time zone', 3)
+('valid_from', 'timestamp without time zone', 3)
+('valid_to', 'timestamp without time zone', 4)
+('valid_to', 'timestamp without time zone', 4)
+
+--- Schema for sla_policies ---
+
+--- Schema for tickets ---
+
+--- Schema for ticket_events ---
+
+--- Schema for sla_metrics ---
+
+--- Schema for departments ---
+
+--- Schema for employees ---
+
+--- Schema for payroll ---
+
+--- Schema for performance_reviews ---
+
+--- Schema for cost_centers ---
+('cost_center_id', 'bigint', 1)
+('cost_center_id', 'bigint', 1)
+('name', 'text', 2)
+('name', 'text', 2)
+('department', 'text', 3)
+('department', 'text', 3)
+
+--- Schema for gl_allocations ---
+('entry_id', 'bigint', 1)
+('entry_id', 'bigint', 1)
+('cost_center_id', 'bigint', 2)
+('cost_center_id', 'bigint', 2)
+('allocation_pct', 'numeric', 3)
+('allocation_pct', 'numeric', 3)
+
+--- Schema for ingestion_jobs ---
+('job_id', 'bigint', 1)
+('job_id', 'bigint', 1)
+('source_system', 'text', 2)
+('source_system', 'text', 2)
+('target_table', 'text', 3)
+('target_table', 'text', 3)
+('schedule', 'text', 4)
+('schedule', 'text', 4)
+
+--- Schema for pipeline_runs ---
+('run_id', 'bigint', 1)
+('run_id', 'bigint', 1)
+('job_id', 'bigint', 2)
+('job_id', 'bigint', 2)
+('start_time', 'timestamp without time zone', 3)
+('start_time', 'timestamp without time zone', 3)
+('end_time', 'timestamp without time zone', 4)
+('end_time', 'timestamp without time zone', 4)
+('status', 'text', 5)
+('status', 'text', 5)
+('rows_processed', 'integer', 6)
+('rows_processed', 'integer', 6)
+
